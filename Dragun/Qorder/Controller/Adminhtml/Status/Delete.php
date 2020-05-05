@@ -1,0 +1,48 @@
+<?php
+
+
+namespace Dragun\Qorder\Controller\Adminhtml\Status;
+
+/**
+ * Class Delete
+ *
+ * @package Dragun\Qorder\Controller\Adminhtml\Status
+ */
+class Delete extends \Dragun\Qorder\Controller\Adminhtml\Status
+{
+
+    /**
+     * Delete action
+     *
+     * @return \Magento\Framework\Controller\ResultInterface
+     */
+    public function execute()
+    {
+        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+        $resultRedirect = $this->resultRedirectFactory->create();
+        // check if we know what should be deleted
+        $id = $this->getRequest()->getParam('status_id');
+        if ($id) {
+            try {
+                // init model and delete
+                $model = $this->_objectManager->create(\Dragun\Qorder\Model\Status::class);
+                $model->load($id);
+                $model->delete();
+                // display success message
+                $this->messageManager->addSuccessMessage(__('You deleted the Status.'));
+                // go to grid
+                return $resultRedirect->setPath('*/*/');
+            } catch (\Exception $e) {
+                // display error message
+                $this->messageManager->addErrorMessage($e->getMessage());
+                // go back to edit form
+                return $resultRedirect->setPath('*/*/edit', ['status_id' => $id]);
+            }
+        }
+        // display error message
+        $this->messageManager->addErrorMessage(__('We can\'t find a Status to delete.'));
+        // go to grid
+        return $resultRedirect->setPath('*/*/');
+    }
+}
+

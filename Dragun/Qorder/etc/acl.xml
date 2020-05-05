@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Dragun_Qorder::order" sortOrder="10" title="order">
+					<resource id="Dragun_Qorder::order_save" sortOrder="10" title="Save order"/>
+					<resource id="Dragun_Qorder::order_delete" sortOrder="20" title="Delete order"/>
+					<resource id="Dragun_Qorder::order_update" sortOrder="30" title="Update order"/>
+					<resource id="Dragun_Qorder::order_view" sortOrder="40" title="View order"/>
+				</resource>
+				<resource id="Dragun_Qorder::status" sortOrder="10" title="status">
+					<resource id="Dragun_Qorder::status_save" sortOrder="10" title="Save status"/>
+					<resource id="Dragun_Qorder::status_delete" sortOrder="20" title="Delete status"/>
+					<resource id="Dragun_Qorder::status_update" sortOrder="30" title="Update status"/>
+					<resource id="Dragun_Qorder::status_view" sortOrder="40" title="View status"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

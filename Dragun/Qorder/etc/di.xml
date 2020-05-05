@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Dragun\Qorder\Api\OrderRepositoryInterface" type="Dragun\Qorder\Model\OrderRepository"/>
+	<preference for="Dragun\Qorder\Api\Data\OrderInterface" type="Dragun\Qorder\Model\Data\Order"/>
+	<preference for="Dragun\Qorder\Api\Data\OrderSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Dragun\Qorder\Model\ResourceModel\Order\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">dragun_qorder_order</argument>
+			<argument name="resourceModel" xsi:type="string">Dragun\Qorder\Model\ResourceModel\Order\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="dragun_qorder_order_listing_data_source" xsi:type="string">Dragun\Qorder\Model\ResourceModel\Order\Grid\Collection</item>
+				<item name="dragun_qorder_status_listing_data_source" xsi:type="string">Dragun\Qorder\Model\ResourceModel\Status\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<preference for="Dragun\Qorder\Api\StatusRepositoryInterface" type="Dragun\Qorder\Model\StatusRepository"/>
+	<preference for="Dragun\Qorder\Api\Data\StatusInterface" type="Dragun\Qorder\Model\Data\Status"/>
+	<preference for="Dragun\Qorder\Api\Data\StatusSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Dragun\Qorder\Model\ResourceModel\Status\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">dragun_qorder_status</argument>
+			<argument name="resourceModel" xsi:type="string">Dragun\Qorder\Model\ResourceModel\Status\Collection</argument>
+		</arguments>
+	</virtualType>
+</config>

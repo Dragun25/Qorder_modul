@@ -1,0 +1,48 @@
+.btn-btn-primary  {
+    font-size: 15px;
+    width: 245px;
+    text-align: center;
+    background-color: #1979c3;
+    border: 1px solid #1979c3;
+    color: white;
+    height: 45px;
+    transition-duration: 0.2s;
+    margin-bottom: 15px;
+}
+
+.btn-btn-primary:hover {
+    background-color: #2278b9;
+    border: 1px solid #2278b9;
+    color: white;
+}
+
+.btn-btn-primary:focus {
+    color: white;
+    background: #1979c3;
+    transition: background 0s;
+}
+
+.box-tocart
+{
+    margin: 0px;
+}
+
+.fieldset
+{
+    margin: 0px;
+}
+
+.fieldset:last-child
+{
+    margin-bottom: 0px;
+}
+
+input[type=submit] {
+    margin-top: 10px;
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}

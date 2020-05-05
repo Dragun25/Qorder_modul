@@ -1,0 +1,20 @@
+.btn-btn-primary
+{
+    font-size: 12px;
+    width: 104px;
+    text-align: center;
+    background-color: #1979c3;
+    color: white;
+    border: 1px solid #1979c3;
+}
+
+.btn-btn-primary:hover {
+    background-color: #2278b9;
+    color: white;
+}
+
+.btn-btn-primary:focus {
+    color: white;
+    background: #1979c3;
+    transition: background 0s;
+}
