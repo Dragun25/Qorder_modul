@@ -11,8 +11,7 @@
 		<column length="255" name="email" nullable="true" xsi:type="varchar"/>
 		<column name="created_datetime" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created Datetime" xsi:type="timestamp"/>
 		<column name="updated_datetime" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated Datetime" xsi:type="timestamp"/>
-
-		<column default="1" identity="false" name="status" nullable="false" xsi:type="int"/>
+		<column default="999" identity="false" name="status" nullable="false" xsi:type="int"/>
 	</table>
 	<table comment="dragun_qorder_status Table" engine="innodb" name="dragun_qorder_status" resource="default">
 		<column comment="Entity Id" identity="true" name="status_id" nullable="false" padding="6" unsigned="false" xsi:type="smallint"/>

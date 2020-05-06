@@ -33,12 +33,12 @@ class StatusAct implements OptionSourceInterface
         $data = [];
         foreach ($items as $item) {
             $statusCode = $item->getData('status_id');
-            $statusCode .= '1';
+//            $statusCode .= '1';
             $label = $item->getData('label');
             $default = $item->getData('is_default');
             if ($default == '1')
             {
-                $data[] = ['value' => '1', 'label' => __($label)];
+                $data[] = ['value' => '999', 'label' => __($label)];
             }
             else $data[] = ['value' => $statusCode, 'label' => __($label)];
 
