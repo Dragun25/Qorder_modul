@@ -3,7 +3,7 @@ namespace Dragun\Qorder\Controller\Index;
 
 use Dragun\Qorder\Api\Data\OrderInterfaceFactory;
 use Dragun\Qorder\Api\OrderRepositoryInterface;
-use Exam\QuickOrder\Model\Status;
+use Dragun\Qorder\Model\Status;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Exception\CouldNotSaveException;
