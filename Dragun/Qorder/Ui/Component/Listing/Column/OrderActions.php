@@ -3,12 +3,14 @@
 
 namespace Dragun\Qorder\Ui\Component\Listing\Column;
 
+use Magento\Ui\Component\Listing\Columns\Column;
+
 /**
  * Class OrderActions
  *
  * @package Dragun\Qorder\Ui\Component\Listing\Column
  */
-class OrderActions extends \Magento\Ui\Component\Listing\Columns\Column
+class OrderActions extends Column
 {
 
     const URL_PATH_EDIT = 'dragun_qorder/order/edit';

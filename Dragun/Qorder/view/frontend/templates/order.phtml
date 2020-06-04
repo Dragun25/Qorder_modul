@@ -1,11 +1,11 @@
 <?php /** @var \Dragun\Qorder\Block\Qorder $block */ ?>
 <?php $productSku = $block->getProductSku()?>
 <button type="submit"
-        title="<?= $block->escapeHtml(__('Dragun')) ?>"
+        title="<?= $block->escapeHtml(__('Quick Order')) ?>"
         class="btn-btn-primary"
         id="btn-btn-primary<?=$productSku ?>"
         >
-    <span><?= /* @escapeNotVerified */ __('Dragun') ?></span>
+    <span><?= /* @escapeNotVerified */ __('Quick Order') ?></span>
 </button>
 
 
@@ -41,7 +41,7 @@
                 type: 'popup',
                 responsive: true,
                 innerScroll: true,
-                title: 'Dragun',
+                title: 'Enter your name and phone number',
                 buttons: false
             };
             var popup = modal(options, $('.mypopup<?= $productSku ?>'));

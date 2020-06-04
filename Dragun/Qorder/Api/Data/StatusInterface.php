@@ -14,6 +14,7 @@ interface StatusInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     const STATUS_CODE = 'status_code';
     const STATUS_ID = 'status_id';
     const LABEL = 'label';
+    const IS_DEFAULT = 'is_default';
 
     /**
      * Get status_id
@@ -68,5 +69,18 @@ interface StatusInterface extends \Magento\Framework\Api\ExtensibleDataInterface
      * @return \Dragun\Qorder\Api\Data\StatusInterface
      */
     public function setLabel($label);
+
+    /**
+     * Get isDefault
+     * @return string|null
+     */
+    public function getIsDefault();
+
+    /**
+     * Set isDefault
+     * @param string $isDefault
+     * @return \Dragun\Qorder\Api\Data\StatusInterface
+     */
+    public function setIsDefault($isDefault);
 }
 

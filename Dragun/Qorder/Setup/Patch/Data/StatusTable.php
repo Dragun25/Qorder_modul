@@ -12,11 +12,11 @@ use Dragun\Qorder\Model\StatusFactory;
 class StatusTable implements DataPatchInterface
 {
 
-    const TABLE_NAME = 'dragun_qorder_status';
+    const TABLE_NAME = 'sergg_quickorder_status';
     
     const STATUS_CODE_COL_NAME  = 'status_code';
     const STATUS_LABEL_COL_NAME = 'label';
-
+    const IS_DEFAULT            = 'is_default';
     
     /**
      * @var TransactionFactory
@@ -64,12 +64,12 @@ class StatusTable implements DataPatchInterface
                 self::STATUS_LABEL_COL_NAME => 'Pending',
             ],
             [
-                self::STATUS_CODE_COL_NAME => 'close',
-                self::STATUS_LABEL_COL_NAME => 'Close',
+                self::STATUS_CODE_COL_NAME => 'approved',
+                self::STATUS_LABEL_COL_NAME => 'Approved',
             ],
             [
-                self::STATUS_CODE_COL_NAME => 'process',
-                self::STATUS_LABEL_COL_NAME => 'Process',
+                self::STATUS_CODE_COL_NAME => 'decline',
+                self::STATUS_LABEL_COL_NAME => 'Decline',
             ],
         ];
 

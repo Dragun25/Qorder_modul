@@ -1,9 +1,9 @@
 var config = {
     paths: {
-        'quickorderr': "Dragun_Qorder/js/component"
+        'dragunqorder': "Dragun_Qorder/js/component"
     },
     shim: {
-        'quickorderr': {
+        'dragunqorder': {
             deps: ['jquery']
         }
     }

@@ -89,5 +89,24 @@ class Status extends \Magento\Framework\Api\AbstractExtensibleObject implements 
     {
         return $this->setData(self::LABEL, $label);
     }
+
+    /**
+     * Get isDefault
+     * @return string|null
+     */
+    public function getIsDefault()
+    {
+        return $this->_get(self::IS_DEFAULT);
+    }
+
+    /**
+     * Set isDefault
+     * @param string $isDefault
+     * @return \Dragun\Qorder\Api\Data\StatusInterface
+     */
+    public function setIsDefault($isDefault)
+    {
+        return $this->setData(self::IS_DEFAULT, $isDefault);
+    }
 }
 

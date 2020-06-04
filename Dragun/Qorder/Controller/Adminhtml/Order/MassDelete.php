@@ -1,6 +1,8 @@
 <?php
 
-namespace  Dragun\Qorder\Controller\Adminhtml\Order;
+
+namespace Dragun\Qorder\Controller\Adminhtml\Order;
+
 
 use Dragun\Qorder\Api\OrderRepositoryInterface;
 use Magento\Backend\App\Action;
@@ -20,7 +22,7 @@ class MassDelete extends Action
      * MassDelete constructor.
      *
      * @param Context                   $context
-     * @param OrderRepositoryInterface   $repository
+     * @param OrderRepositoryInterface  $repository
      */
     public function __construct(
         Context $context,
@@ -31,21 +33,25 @@ class MassDelete extends Action
         $this->logger     = $logger;
         parent::__construct($context);
     }
+    public function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Dragun_Qorder::dragun_qorder');
+    }
 
     /**
      * @inheritDoc
      */
     public function execute()
     {
-        if (!$this->getRequest()->isPost()) {
-            return $this->_redirect('*/*/listing');
+        if (!$this->getRequest()->getParam('selected')) {
+            return $this->_redirect('*/*/index');
         }
 
-        $ids = $this->getRequest()->getParam('ids');
+        $ids = $this->getRequest()->getParam('selected');
 
         if (empty($ids)) {
             $this->messageManager->addWarningMessage(__("Please select ids"));
-            return $this->_redirect('*/*/listing');
+            return $this->_redirect('*/*/index');
         }
 
         foreach ($ids as $id) {
@@ -57,6 +63,6 @@ class MassDelete extends Action
         }
 
         $this->messageManager->addSuccessMessage(sprintf("items %s was deleted", implode(',', $ids)));
-        $this->_redirect('*/*/listing');
+        $this->_redirect('*/*/index');
     }
 }

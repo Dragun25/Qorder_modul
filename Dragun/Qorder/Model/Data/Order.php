@@ -146,5 +146,43 @@ class Order extends \Magento\Framework\Api\AbstractExtensibleObject implements O
     {
         return $this->setData(self::STATUS, $status);
     }
+
+    /**
+     * Get CreateTime
+     * @return string|null
+     */
+    public function getCreateTime()
+    {
+        return $this->_get(self::CREATE_TIME);
+    }
+
+    /**
+     * Set CreateTime
+     * @param string $createTime
+     * @return \Dragun\Qorder\Api\Data\OrderInterface
+     */
+    public function setCreateTime($createTime)
+    {
+        return $this->setData(self::CREATE_TIME, $createTime);
+    }
+
+    /**
+     * Get UpdateTime
+     * @return string|null
+     */
+    public function getUpdateTime()
+    {
+        return $this->_get(self::UPDATE_TIME);
+    }
+
+    /**
+     * Set UpdateTime
+     * @param string $updateTime
+     * @return \Dragun\Qorder\Api\Data\OrderInterface
+     */
+    public function setUpdateTime($updateTime)
+    {
+        return $this->setData(self::UPDATE_TIME, $updateTime);
+    }
 }
 

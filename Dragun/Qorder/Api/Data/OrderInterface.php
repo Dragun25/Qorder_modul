@@ -17,6 +17,9 @@ interface OrderInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     const STATUS = 'status';
     const PHONE = 'phone';
     const EMAIL = 'email';
+    const CREATE_TIME = 'created_datetime';
+    const UPDATE_TIME = 'updated_datetime';
+
 
     /**
      * Get order_id
@@ -110,5 +113,34 @@ interface OrderInterface extends \Magento\Framework\Api\ExtensibleDataInterface
      * @return \Dragun\Qorder\Api\Data\OrderInterface
      */
     public function setStatus($status);
+
+    /**
+     * Get CreateTime
+     * @return string|null
+     */
+    public function getCreateTime();
+
+    /**
+     * Set CreateTime
+     * @param string $createTime
+     * @return \Dragun\Qorder\Api\Data\OrderInterface
+     */
+    public function setCreateTime($createTime);
+
+    /**
+     * Get UpdateTime
+     * @return string|null
+     */
+    public function getUpdateTime();
+
+    /**
+     * Set UpdateTime
+     * @param string $updateTime
+     * @return \Dragun\Qorder\Api\Data\OrderInterface
+     */
+    public function setUpdateTime($updateTime);
+
+
+
 }
 

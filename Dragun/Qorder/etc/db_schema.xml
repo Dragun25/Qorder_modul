@@ -9,8 +9,8 @@
 		<column length="255" name="sku" nullable="true" xsi:type="varchar"/>
 		<column length="255" name="phone" nullable="true" xsi:type="varchar"/>
 		<column length="255" name="email" nullable="true" xsi:type="varchar"/>
-		<column name="created_datetime" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created Datetime" xsi:type="timestamp"/>
-		<column name="updated_datetime" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated Datetime" xsi:type="timestamp"/>
+		<column xsi:type="timestamp" name="created_datetime" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created Datetime"/>
+		<column xsi:type="timestamp" name="updated_datetime" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated Datetime"/>
 		<column default="999" identity="false" name="status" nullable="false" xsi:type="int"/>
 	</table>
 	<table comment="dragun_qorder_status Table" engine="innodb" name="dragun_qorder_status" resource="default">
@@ -21,5 +21,6 @@
 		<column length="255" name="status_code" nullable="true" xsi:type="varchar"/>
 		<column length="255" name="label" nullable="true" xsi:type="varchar"/>
 		<column default="0" identity="false" name="is_default" nullable="false" xsi:type="int"/>
+
 	</table>
 </schema>

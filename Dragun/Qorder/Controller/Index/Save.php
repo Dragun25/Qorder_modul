@@ -1,13 +1,13 @@
 <?php
-
 namespace Dragun\Qorder\Controller\Index;
 
+use Dragun\Qorder\Api\Data\OrderInterfaceFactory;
 use Dragun\Qorder\Api\OrderRepositoryInterface;
-use Dragun\Qorder\Model\StatusFactory;
+use Exam\QuickOrder\Model\Status;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Dragun\Qorder\Api\Data\OrderInterfaceFactory;
-use Dragun\Qorder\Api\Data\StatusInterfaceFactory;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\AbstractModel;
 
 
@@ -16,44 +16,29 @@ class Save extends Action
     /**
      * @var OrderRepositoryInterface
      */
-    private $dataForm;
+    private $orderRepository;
     /**
      * @var OrderInterfaceFactory
      */
     private $orderInterfaceFactory;
-    /**
-     * @var StatusInterfaceFactory
-     */
-    private $statusModel;
-    /**
-     * @var StatusFactory
-     */
-    private $statusFactory;
-    /**
-     * @var StatusInterfaceFactory
-     */
-    private $statusInterfaceFactory;
+
+
 
     /**
      * Save constructor.
      * @param Context $context
+     * @param OrderRepositoryInterface $orderRepository
      * @param OrderInterfaceFactory $orderInterfaceFactory
-     * @param OrderRepositoryInterface $dataPersistor
      */
-    public function __construct
-    (
+    public function __construct(
         Context $context,
-        OrderInterfaceFactory $orderInterfaceFactory,
-        OrderRepositoryInterface $dataForm,
-        StatusFactory $statusFactory,
-        StatusInterfaceFactory $statusInterfaceFactory
-    )
-    {
+        OrderRepositoryInterface $orderRepository,
+        OrderInterfaceFactory $orderInterfaceFactory
+    ) {
         parent::__construct($context);
-        $this->statusFactory           = $statusFactory;
-        $this->statusInterfaceFactory  = $statusInterfaceFactory;
-        $this->orderInterfaceFactory   = $orderInterfaceFactory;
-        $this->dataForm                = $dataForm;
+
+        $this->orderInterfaceFactory = $orderInterfaceFactory;
+        $this->orderRepository = $orderRepository;
     }
 
     /**
@@ -62,28 +47,41 @@ class Save extends Action
      */
     public function execute()
     {
-        $result = $this->getRequest()->getParams();
+        $params = $this->getRequest()->getParams();
+
         /**
+         * @var Status $statusmodel
          * @var AbstractModel $model
-         * @var StatusFactory $statusmodel
          */
+
         $model = $this->orderInterfaceFactory->create();
-//        $statusform = $this->statusModel->create();
-//        $this->statusFactory->create()->load($statusform, '1', 'is_default');
 
-        /**
-         * @var OrderInterfaceFactory $model
-         */
-        $model->setName($result['name']);
-        $model->setPhone($result['phone']);
-        $model->setEmail($result['email']);
-        $model->setSku($result['sku']);
-//        $model->setStatus($statusform);
+        try {
+            if (!\Zend_Validate::is(trim($params['name']), 'NotEmpty')) {
+                throw new LocalizedException(('Enter the Name and try again.'));
+            }
+            if (!\Zend_Validate::is(trim($params['phone']), 'NotEmpty')) {
+                throw new LocalizedException(('Enter the phone and try again.'));
+            }
+            if (!\Zend_Validate::is(trim($params['email']), 'EmailAddress') && !empty($params['email'])) {
+                throw new LocalizedException(__('The email address is invalid. Verify the email address and try again.'));
+            }
 
-        $this->dataForm->save($model);
+        $model->setName($params['name']);
+        $model->setSku($params['sku']);
+        $model->setPhone($params['phone']);
+        $model->setEmail($params['email']);
+        $this->orderRepository->save($model);
 
-        $this->_redirect($result['url']);
+            $this->messageManager->addSuccessMessage('Saved!');
+        } catch (CouldNotSaveException $e) {
+            $this->logger->error($e->getMessage());
+            $this->messageManager->addErrorMessage('Error');
+        } catch (LocalizedException $e) {
+            $this->logger->error($e->getMessage());
+            $this->messageManager->addErrorMessage($e->getMessage());
+        }
 
-
+        $this->_redirect($params['url']);
     }
 }

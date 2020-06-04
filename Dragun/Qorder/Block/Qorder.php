@@ -11,6 +11,7 @@ class Qorder extends Template
      * @var Product
      */
     protected $_product;
+
     /**
      * Qorder constructor.
      * @param Template\Context $context

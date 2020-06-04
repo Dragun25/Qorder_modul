@@ -64,8 +64,8 @@ class StatusActions extends \Magento\Ui\Component\Listing\Columns\Column
                             ),
                             'label' => __('Delete'),
                             'confirm' => [
-                                'title' => __('Delete "${ $.$data.label }"'),
-                                'message' => __('Are you sure you wan\'t to delete a "${ $.$data.label }" record?')
+                                'title' => __('Delete "${ $.$data.name }"'),
+                                'message' => __('Are you sure you wan\'t to delete a "${ $.$data.name }" record?')
                             ]
                         ]
                     ];
