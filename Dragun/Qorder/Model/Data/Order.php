@@ -4,13 +4,14 @@
 namespace Dragun\Qorder\Model\Data;
 
 use Dragun\Qorder\Api\Data\OrderInterface;
+use Magento\Framework\Api\AbstractExtensibleObject;
 
 /**
  * Class Order
  *
  * @package Dragun\Qorder\Model\Data
  */
-class Order extends \Magento\Framework\Api\AbstractExtensibleObject implements OrderInterface
+class Order extends AbstractExtensibleObject implements OrderInterface
 {
 
     /**

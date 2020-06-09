@@ -12,13 +12,13 @@
 			 parent="Dragun::top_level"
 			 resource="Magento_Backend::content"
 			 sortOrder="9999"
-			 title="order"/>
+			 title="Order"/>
 		<add action="dragun_qorder/status/index"
 			 id="Dragun_Qorder::dragun_qorder_status"
 			 module="Dragun_Qorder"
 			 parent="Dragun::top_level"
 			 resource="Magento_Backend::content"
 			 sortOrder="9999"
-			 title="status"/>
+			 title="Status"/>
 	</menu>
 </config>

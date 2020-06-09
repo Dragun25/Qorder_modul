@@ -12,8 +12,8 @@
 
 <div class="mypopup<?= $productSku ?>">
     <form action="<?= $block->getUrl("dragunqorder/index/save") ?>"
-          method="POST"
-          data-mage-init='{"validation":{}}'>
+          method="POST">
+<!--          data-mage-init='{"validation":{}}'>-->
         <label>Name
             <input type="text" name="name" data-validate='{"required":true, "maxlength": 18}'>
         </label>
@@ -28,7 +28,6 @@
         <input type="submit" value="Send" class="action submit primary">
     </form>
 </div>
-
 
 <script>
     require(
@@ -51,4 +50,5 @@
         }
     );
 </script>
+
 

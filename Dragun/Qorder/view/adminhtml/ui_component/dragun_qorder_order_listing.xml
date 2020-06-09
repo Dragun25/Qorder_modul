@@ -127,18 +127,6 @@
             </settings>
         </column>
         <column name="name">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">name</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">false</rule>
-                    </validation>
-                </editor>
-            </settings>
-        </column>
-        <column name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="string">text</item>

@@ -58,10 +58,10 @@ class Save extends Action
 
         try {
             if (!\Zend_Validate::is(trim($params['name']), 'NotEmpty')) {
-                throw new LocalizedException(('Enter the Name and try again.'));
+                throw new LocalizedException(__('Enter the Name and try again.'));
             }
             if (!\Zend_Validate::is(trim($params['phone']), 'NotEmpty')) {
-                throw new LocalizedException(('Enter the phone and try again.'));
+                throw new LocalizedException(__('Enter the phone and try again.'));
             }
             if (!\Zend_Validate::is(trim($params['email']), 'EmailAddress') && !empty($params['email'])) {
                 throw new LocalizedException(__('The email address is invalid. Verify the email address and try again.'));
@@ -75,10 +75,10 @@ class Save extends Action
 
             $this->messageManager->addSuccessMessage('Saved!');
         } catch (CouldNotSaveException $e) {
-            $this->logger->error($e->getMessage());
+//            $this->logger->error($e->getMessage());
             $this->messageManager->addErrorMessage('Error');
         } catch (LocalizedException $e) {
-            $this->logger->error($e->getMessage());
+//            $this->logger->error($e->getMessage());
             $this->messageManager->addErrorMessage($e->getMessage());
         }
 
